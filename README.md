@@ -1,6 +1,7 @@
 # About
 
-Base structure for my games forked from (https://github.com/deepnight/gameBase).
+This game is my submission for the [GMTK Jam 2021](https://itch.io/jam/gmtk-2021).
+The code use the structure found here (https://github.com/grimo0/gameBase) and based on Deepnight's one.
 The language is **Haxe** (https://haxe.org).
 Builds are done with **Hashlink** (https://hashlink.haxe.org), a virtual machine, working on all platforms. 
 And using **Heaps** (https://heaps.io), a 2D/3D Haxe library (*ie.* an Haxelib). All of those tools are free and open-source.
@@ -59,3 +60,5 @@ https://github.com/HaxeFoundation/hashlink/wiki/Distribution-&--Packaging
 - [LibGDX Texture Packer](https://github.com/libgdx/libgdx/wiki/Texture-packer) for packing texture
 - Debug font from Heaps samples
 - [binding](https://github.com/haddock7/hlimgui) for [Dear ImGui](https://github.com/ocornut/imgui)
+- Spritesheets from [Cainos](https://cainos.itch.io/)
+- Fx from [CodeManu](https://codemanu.itch.io/)
