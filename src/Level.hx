@@ -1,3 +1,4 @@
+import en.Prisonner;
 import h2d.Bitmap;
 import h2d.Tile;
 
@@ -82,28 +83,10 @@ class Level extends dn.Process {
 		layerRendered.alpha = currLevel.l_PropsAutoLayer.opacity;
 		layerRendered.setScale(2);
 		root.add(layerRendered, Const.GAME_LEVEL_CEILING);
-		
-		/* var rootLayer = Const.GAME_LEVEL_FLOOR;
-		for (i in 0...currLevel.allUntypedLayers.length) {
-			var layer = currLevel.allUntypedLayers[currLevel.allUntypedLayers.length - 1 - i];
-			if (!layer.visible) continue;
-			if (layer.type == Entities) {
-				rootLayer = Const.GAME_LEVEL_CEILING;
-				continue;
-			}
-
-			root.add(currLevel.l_Floor.render(), rootLayer);
-		} */
 
 		// Player
-		for (p in currLevel.l_Entities.getAllUntyped()) { // TODO: Change getAllUntyped for your alls
-			// Create the entity
-			var pEnt = new en.Entity(Assets.entities);
-			pEnt.spr.set(p.identifier);
-			pEnt.spr.tile.setCenterRatio(p.pivotX, p.pivotY);
-			pEnt.spr.tile.scaleToSize(p.width, p.height);
-			pEnt.setPosCell(p.cx, p.cy);
-		};
+		var pEnt = new en.Prisonner(currLevel.l_Entities.all_Prisonner1[0]);
+		var pEnt = new en.Prisonner(currLevel.l_Entities.all_Prisonner2[0]);
 	}
 
 	override function onResize() {
