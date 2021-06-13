@@ -14,7 +14,7 @@
 	"format": "RGBA8888",
 	"fast": false,
 	"debug": false,
-	"combineSubdirectories": false,
+	"combineSubdirectories": true,
 	"flattenPaths": true,
 	"premultiplyAlpha": false,
 	"limitMemory": true,
