@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+
+#: src/GameFocusHelper.hx:30
+msgid "Click anywhere to start"
+msgstr ""
+
+#: src/GameFocusHelper.hx:32
+msgid "PAUSED - click anywhere to resume"
+msgstr ""
+
+#: src/GameFocusHelper.hx:55
+msgid "Loading, please wait..."
+msgstr ""
+
+#: src/ui/MainMenu.hx:55
+msgid "Press ESCAPE again to exit."
+msgstr ""
+
+

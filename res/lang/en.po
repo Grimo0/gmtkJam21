@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#: src/GameFocusHelper.hx:30
+msgid "Click anywhere to start"
+msgstr ""
+
+#: src/GameFocusHelper.hx:32
+msgid "PAUSED - click anywhere to resume"
+msgstr ""
+
+#: src/GameFocusHelper.hx:55
+msgid "Loading, please wait..."
+msgstr ""
+
+#: src/ui/MainMenu.hx:55
+msgid "Press ESCAPE again to exit."
+msgstr ""
