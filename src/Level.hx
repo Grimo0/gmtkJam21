@@ -1,6 +1,7 @@
 import en.Prisonner;
 import h2d.Bitmap;
 import h2d.Tile;
+import LDtkMap;
 
 class Level extends dn.Process {
 	var game(get, never) : Game; inline function get_game() return Game.ME;
@@ -31,8 +32,9 @@ class Level extends dn.Process {
 
 	public inline function coordId(cx, cy) return cx + cy * cWid;
 
-	public inline function hasCollision(cx, cy) : Bool
-		return false; // TODO: collision with entities and obstacles
+	public inline function hasCollision(cx, cy) : Bool 
+		return currLevel.l_Floor.getInt(cx, cy) >= 3 // Walls
+			|| currLevel.l_Props.getInt(cx, cy) > 0; // Any props
 
 	public inline function getFloor(cx, cy) : Int
 		return currLevel.l_Floor.getInt(cx, cy);
@@ -61,20 +63,24 @@ class Level extends dn.Process {
 		layerRendered.alpha = currLevel.l_Floor.opacity;
 		layerRendered.setScale(2);
 		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
-		layerRendered = currLevel.l_PropsShadowAutoLayer.render();
-		layerRendered.alpha = currLevel.l_PropsShadowAutoLayer.opacity;
-		layerRendered.setScale(2);
-		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
-		layerRendered = currLevel.l_Props.render();
-		layerRendered.alpha = currLevel.l_Props.opacity;
-		layerRendered.setScale(2);
-		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+
 		layerRendered = currLevel.l_FloorShadowAutoLayer.render();
 		layerRendered.alpha = currLevel.l_FloorShadowAutoLayer.opacity;
 		layerRendered.setScale(2);
 		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+
 		layerRendered = currLevel.l_FloorAutoLayer.render();
 		layerRendered.alpha = currLevel.l_FloorAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+
+		layerRendered = currLevel.l_PropsShadowAutoLayer.render();
+		layerRendered.alpha = currLevel.l_PropsShadowAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+
+		layerRendered = currLevel.l_Props.render();
+		layerRendered.alpha = currLevel.l_Props.opacity;
 		layerRendered.setScale(2);
 		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
 
