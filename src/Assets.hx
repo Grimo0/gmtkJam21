@@ -41,6 +41,14 @@ class Assets {
 					Game.ME.onCdbReload();
 			}, 0.2);
 		});
+		hxd.Res.LDtkMap.watch(function() {
+			Main.ME.delayer.cancelById("LDtkMap");
+
+			Main.ME.delayer.addS("LDtkMap", function() {
+				world.parseJson(hxd.Res.LDtkMap.entry.getBytes().toString());
+				Game.ME.transition(Game.ME.level.currLevel.uid);
+			}, 0.2);
+		});
 		#end
 
 		// -- Database
