@@ -91,10 +91,12 @@ class Level extends dn.Process {
 		root.add(layerRendered, Const.GAME_LEVEL_CEILING);
 
 		// Player
-		var p1 = new en.Prisonner(currLevel.l_Entities.all_Prisonner1[0]);
-		var p2 = new en.Prisonner(currLevel.l_Entities.all_Prisonner2[0]);
-		p1.compagnon = p2;
-		p2.compagnon = p1;
+		if (currLevel.l_Entities.getAllUntyped().length > 0) {
+			var p1 = new en.Prisonner(currLevel.l_Entities.all_Prisonner1[0]);
+			var p2 = new en.Prisonner(currLevel.l_Entities.all_Prisonner2[0]);
+			p1.compagnon = p2;
+			p2.compagnon = p1;
+		}
 	}
 
 	override function onResize() {

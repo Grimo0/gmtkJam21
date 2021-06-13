@@ -57,6 +57,10 @@ class Prisonner extends Unit {
 		cd.unset('compagnonFollowed');
 	}
 
+	override function onDie() {
+		game.gameOver();
+	}
+
 	override function preUpdate() {
 		super.preUpdate();
 

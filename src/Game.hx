@@ -92,6 +92,7 @@ class Game extends Process {
 	function startLevel(?levelUID : Int) {
 		locked = false;
 		started = false;
+		ca.unlock();
 
 		scroller.removeChildren();
 
@@ -124,6 +125,12 @@ class Game extends Process {
 			if (onDone != null)
 				onDone();
 		}
+	}
+
+	public function gameOver() {
+		locked = true;
+		ca.lock();
+		new ui.GameOver();
 	}
 
 	/** CDB file changed on disk**/
