@@ -40,6 +40,10 @@ class Main extends dn.Process {
 		controller.bind(AXIS_LEFT_X_POS, Key.RIGHT, Key.D);
 		controller.bind(AXIS_LEFT_Y_POS, Key.UP, Key.Z, Key.W);
 		controller.bind(AXIS_LEFT_Y_NEG, Key.DOWN, Key.S);
+		controller.bind(AXIS_RIGHT_X_NEG, Key.LEFT, Key.J);
+		controller.bind(AXIS_RIGHT_X_POS, Key.RIGHT, Key.L);
+		controller.bind(AXIS_RIGHT_Y_POS, Key.UP, Key.I);
+		controller.bind(AXIS_RIGHT_Y_NEG, Key.DOWN, Key.K);
 		controller.bind(X, Key.F);
 		controller.bind(Y, Key.C);
 		controller.bind(A, Key.E);

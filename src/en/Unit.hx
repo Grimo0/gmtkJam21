@@ -87,6 +87,6 @@ class Unit extends Entity {
 	function onDamage(dmg : Int, from : Entity) {}
 
 	function onDie() {
-		destroy();
+		// destroy();
 	}
 }
