@@ -38,7 +38,7 @@ class Main extends dn.Process {
 		ca = controller.createAccess("main");
 		controller.bind(AXIS_LEFT_X_NEG, Key.LEFT, Key.Q, Key.A);
 		controller.bind(AXIS_LEFT_X_POS, Key.RIGHT, Key.D);
-		controller.bind(AXIS_LEFT_Y_POS, Key.UP, Key.Z);
+		controller.bind(AXIS_LEFT_Y_POS, Key.UP, Key.Z, Key.W);
 		controller.bind(AXIS_LEFT_Y_NEG, Key.DOWN, Key.S);
 		controller.bind(X, Key.F);
 		controller.bind(Y, Key.C);
@@ -60,10 +60,6 @@ class Main extends dn.Process {
 		// Start
 		hxd.Timer.skip();
 		delayer.addF(startGame, 1);
-
-		#if debug
-		debug = true;
-		#end
 	}
 
 	public function startMainMenu() {
