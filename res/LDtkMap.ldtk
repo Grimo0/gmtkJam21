@@ -9,7 +9,7 @@
 		"url": "https://ldtk.io"
 	},
 	"jsonVersion": "0.9.3",
-	"nextUid": 239,
+	"nextUid": 240,
 	"worldLayout": "GridVania",
 	"worldGridWidth": 256,
 	"worldGridHeight": 256,
@@ -2054,7 +2054,7 @@
 		}
 	], "entities": [
 		{
-			"identifier": "Player",
+			"identifier": "Prisonner1",
 			"uid": 5,
 			"tags": [],
 			"width": 32,
@@ -2067,7 +2067,32 @@
 			"hollow": true,
 			"color": "#94D9B3",
 			"renderMode": "Cross",
-			"showName": false,
+			"showName": true,
+			"tilesetId": null,
+			"tileId": null,
+			"tileRenderMode": "Stretch",
+			"maxCount": 1,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0.5,
+			"pivotY": 0.5,
+			"fieldDefs": []
+		},
+		{
+			"identifier": "Prisonner2",
+			"uid": 239,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": true,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": true,
+			"color": "#94A1D9",
+			"renderMode": "Cross",
+			"showName": true,
 			"tilesetId": null,
 			"tileId": null,
 			"tileRenderMode": "Stretch",
@@ -2213,7 +2238,7 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "Player",
+							"__identifier": "Prisonner1",
 							"__grid": [6,6],
 							"__pivot": [0.5,0.5],
 							"__tile": null,
@@ -2221,6 +2246,17 @@
 							"height": 32,
 							"defUid": 5,
 							"px": [208,208],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "Prisonner2",
+							"__grid": [5,6],
+							"__pivot": [0.5,0.5],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 239,
+							"px": [174,208],
 							"fieldInstances": []
 						}
 					]
