@@ -15,7 +15,7 @@
 	"fast": false,
 	"debug": false,
 	"combineSubdirectories": false,
-	"flattenPaths": false,
+	"flattenPaths": true,
 	"premultiplyAlpha": false,
 	"limitMemory": true,
 	"grid": false
