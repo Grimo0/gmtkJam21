@@ -54,7 +54,7 @@
 				"$haxe-trace"
 			],
 			"group": "build",
-			"command": "haxelib run redistHelper hl.dx.hxml hl.sdl.hxml -p gmtkJam21",
+			"command": "haxelib run redistHelper hl.dx.hxml hl.sdl.hxml -p escape-together",
 			"detail": "Create a package in the redist folder."
 		},
 		{
@@ -102,7 +102,7 @@
 				"$haxe-trace"
 			],
 			"group": "build",
-			"command": "haxelib run redistHelper js.hxml -zip -p gmtkJam21",
+			"command": "haxelib run redistHelper js.hxml -zip -p escape-together",
 			"detail": "Create a package in the redist folder."
 		},
 		{
@@ -163,7 +163,7 @@
 		{
 			"label": "Butler dx",
 			"type": "shell",
-			"command": "butler push redist/directx/gmtkJam21 Grim0/gmtkJam21:win-32",
+			"command": "butler push redist/directx/escape-together Grim0/escape-together:win-32",
 			"presentation": {
 				"reveal": "always",
 				"revealProblems": "onProblem",
@@ -180,7 +180,24 @@
 		{
 			"label": "Butler sdl",
 			"type": "shell",
-			"command": "butler push redist/opengl_win/gmtkJam21 Grim0/gmtkJam21:win-32-sdl",
+			"command": "butler push redist/opengl_win/escape-together Grim0/escape-together:win-32-sdl",
+			"presentation": {
+				"reveal": "always",
+				"revealProblems": "onProblem",
+				"panel": "shared"
+			},
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				"$haxe-trace"
+			],
+			"detail": "Push the redist files on butler"
+		},
+		{
+			"label": "Butler js",
+			"type": "shell",
+			"command": "butler push redist/js.zip Grim0/escape-together:js",
 			"presentation": {
 				"reveal": "always",
 				"revealProblems": "onProblem",
