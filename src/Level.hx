@@ -1,3 +1,6 @@
+import h2d.Bitmap;
+import h2d.Tile;
+
 class Level extends dn.Process {
 	var game(get, never) : Game; inline function get_game() return Game.ME;
 	var fx(get, never) : Fx; inline function get_fx() return game.fx;
@@ -48,26 +51,47 @@ class Level extends dn.Process {
 		if (currLevel.hasBgImage()) {
 			var background = currLevel.getBgBitmap();
 			root.add(background, Const.GAME_LEVEL_BG);
+		} else {
+			root.add(new Bitmap(Tile.fromColor(currLevel.bgColor, pxWid, pxHei)), Const.GAME_LEVEL_BG);
 		}
 
-		// Floor
+		// Layers - floor
 		root.add(currLevel.l_Floor.render(), Const.GAME_LEVEL_FLOOR);
+		root.add(currLevel.l_PropsShadowAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
+		root.add(currLevel.l_Props.render(), Const.GAME_LEVEL_FLOOR);
+		root.add(currLevel.l_FloorShadowAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
+		root.add(currLevel.l_FloorAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
+		var floorIt = root.getLayer(Const.GAME_LEVEL_FLOOR);
+		while (floorIt != null && floorIt.hasNext()) {
+			var o = floorIt.next();
+			o.setScale(2);
+		}
+
+		// Layers - ceiling
+		root.add(currLevel.l_PropsAutoLayer.render(), Const.GAME_LEVEL_CEILING);
+		var ceilIt = root.getLayer(Const.GAME_LEVEL_FLOOR);
+		while (ceilIt != null && ceilIt.hasNext()) {
+			var o = ceilIt.next();
+			o.setScale(2);
+		}
+		
+		/* var rootLayer = Const.GAME_LEVEL_FLOOR;
+		for (i in 0...currLevel.allUntypedLayers.length) {
+			var layer = currLevel.allUntypedLayers[currLevel.allUntypedLayers.length - 1 - i];
+			if (!layer.visible) continue;
+			if (layer.type == Entities) {
+				rootLayer = Const.GAME_LEVEL_CEILING;
+				continue;
+			}
+
+			root.add(currLevel.l_Floor.render(), rootLayer);
+		} */
 
 		// Player
 		for (p in currLevel.l_Entities.getAllUntyped()) { // TODO: Change getAllUntyped for your alls
-			// Read h2d.Tile
-			var tileset = Assets.world.tilesets.get(p.defaultTileInfos.tilesetUid);
-			if (tileset == null)
-				continue;
-			var tile = tileset.getFreeTile(p.defaultTileInfos.x, p.defaultTileInfos.y, p.defaultTileInfos.w, p.defaultTileInfos.h);
-			if (tile == null)
-				continue;
-
 			// Create the entity
 			var pEnt = new en.Entity(Assets.entities);
-			pEnt.spr.tile.switchTexture(tile);
-			pEnt.spr.tile.setPosition(tile.x, tile.y);
-			pEnt.spr.tile.setSize(tile.width, tile.height);
+			pEnt.spr.set(p.identifier);
 			pEnt.spr.tile.setCenterRatio(p.pivotX, p.pivotY);
 			pEnt.spr.tile.scaleToSize(p.width, p.height);
 			pEnt.setPosCell(p.cx, p.cy);
