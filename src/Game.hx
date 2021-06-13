@@ -73,7 +73,7 @@ class Game extends Process {
 
 	public function save() {
 		sav.flags = flags.copy();
-		sav.levelUID = level.uniqId;
+		sav.levelUID = level.currLevel.uid;
 
 		hxd.Save.save(sav, 'save/game');
 	}
