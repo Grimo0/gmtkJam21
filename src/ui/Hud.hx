@@ -14,8 +14,8 @@ class Hud extends dn.Process {
 	var flow : h2d.Flow;
 	var invalidated = true;
 
-	public var p1UI : PrisonnerUI;
-	public var p2UI : PrisonnerUI;
+	public var p1UI : PrisonerUI;
+	public var p2UI : PrisonerUI;
 
 	public function new() {
 		super(Game.ME);
@@ -25,8 +25,8 @@ class Hud extends dn.Process {
 
 		// flow = new h2d.Flow(root);
 
-		p1UI = new PrisonnerUI(root);
-		p2UI = new PrisonnerUI(root);
+		p1UI = new PrisonerUI(root);
+		p2UI = new PrisonerUI(root);
 	}
 
 	override function onResize() {

@@ -9,10 +9,9 @@ class KeyButton extends h2d.Object {
 		super();
 		bg = new HSprite(Assets.ui, 'Key', this);
 
-		var tf = new h2d.Text(Assets.fontTiny, this);
+		var tf = new h2d.Text(Assets.fontPixel, this);
 		tf.text = k;
 		tf.textAlign = Center;
 		tf.maxWidth = bg.tile.width;
-		tf.y -= 2;
 	}
 }

@@ -1,7 +1,8 @@
 package en;
 
+import ui.SuccessScreen;
 import dn.heaps.GamePad.PadKey;
-import ui.PrisonnerUI;
+import ui.PrisonerUI;
 
 enum EDirection {
 	UP(k:PadKey);
@@ -10,11 +11,11 @@ enum EDirection {
 	RIGHT(k:PadKey);
 }
 
-class Prisonner extends Unit {
+class Prisoner extends Unit {
 	
-	public var ui(get, never) : PrisonnerUI;
-	public inline function get_ui() : PrisonnerUI {
-		if (entityType == Prisonner1)
+	public var ui(get, never) : PrisonerUI;
+	public inline function get_ui() : PrisonerUI {
+		if (entityType == Prisoner1)
 			return game.hud.p1UI;
 		return game.hud.p2UI;
 	}
@@ -28,7 +29,7 @@ class Prisonner extends Unit {
 	var mvSpd = .2;
 	var frameToReact = 0.;
 	public var mvDirection : EDirection = null;
-	public var compagnon : Prisonner = null;
+	public var compagnon : Prisoner = null;
 
 	override function set_maxLife(v:Int):Int {
 		super.set_maxLife(v);
@@ -43,7 +44,7 @@ class Prisonner extends Unit {
 
 	public function new(ldtkEnt : LDtkMap.LDtkMap_Entity) {
 		entityType = ldtkEnt.entityType;
-		if (ldtkEnt.entityType == Prisonner1) {
+		if (ldtkEnt.entityType == Prisoner1) {
 			mvKeys.push(UP(AXIS_LEFT_Y_POS));
 			mvKeys.push(LEFT(AXIS_LEFT_X_NEG));
 			mvKeys.push(DOWN(AXIS_LEFT_Y_NEG));
@@ -123,13 +124,18 @@ class Prisonner extends Unit {
 
 			// Can't move
 			if (level.hasCollision(mvToX, mvToY)) {
-				mvToX = mvToY = 0;
-				cd.setF('compagnonFollowed', frameToReact * .5);
-				cd.onComplete('compagnonFollowed', () -> {
-					stopMove(true);
-					compagnon.stopMove(true);
-				});
-				continue;
+				if (level.getFloor(mvToX, mvToY) == 4) { // door
+					game.sucess();
+					return;
+				} else {
+					mvToX = mvToY = 0;
+					cd.setF('compagnonFollowed', frameToReact * .5);
+					cd.onComplete('compagnonFollowed', () -> {
+						stopMove(true);
+						compagnon.stopMove(true);
+					});
+					continue;
+				}
 			}
 
 			// The compagnon didn't move or they didn't went the same way

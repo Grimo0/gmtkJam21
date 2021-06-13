@@ -1,6 +1,6 @@
 package ui;
 
-class GameOver extends dn.Process {
+class SuccessScreen extends dn.Process {
 	
 	public var pxWid(get, never) : Int;
 	function get_pxWid() return M.ceil(w() / Const.SCALE);
@@ -22,15 +22,11 @@ class GameOver extends dn.Process {
 
 		level = new Level();
 		level.currLevel = Assets.world.all_levels.LevelGameOver;
-		var tombs = Assets.ui.getBitmap('gameOver', level.root);
-		tombs.setScale(2);
-		tombs.x = (level.pxWid - tombs.tile.width * tombs.scaleX) * .5;
-		tombs.y = level.pxHei * 7/8 - tombs.tile.height * tombs.scaleY;
 
 		root.addChild(group);
 
 		var tf = new h2d.Text(Assets.fontLarge, group);
-		tf.text = Lang.t._('You didn\'t found liberty.\nPress Escape to try again.');
+		tf.text = Lang.t._('You did it you found liberty !\nYOUHOU !!!\nPress Escape to try again.');
 		tf.textAlign = Center;
 		
 		ca = Main.ME.controller.createAccess("GameOver", true);

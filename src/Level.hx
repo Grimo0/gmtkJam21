@@ -1,4 +1,4 @@
-import en.Prisonner;
+import en.Prisoner;
 import h2d.Bitmap;
 import h2d.Tile;
 import LDtkMap;
@@ -92,8 +92,8 @@ class Level extends dn.Process {
 
 		// Player
 		if (currLevel.l_Entities.getAllUntyped().length > 0) {
-			var p1 = new en.Prisonner(currLevel.l_Entities.all_Prisonner1[0]);
-			var p2 = new en.Prisonner(currLevel.l_Entities.all_Prisonner2[0]);
+			var p1 = new en.Prisoner(currLevel.l_Entities.all_Prisoner1[0]);
+			var p2 = new en.Prisoner(currLevel.l_Entities.all_Prisoner2[0]);
 			p1.compagnon = p2;
 			p2.compagnon = p1;
 		}

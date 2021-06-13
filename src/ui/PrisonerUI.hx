@@ -1,14 +1,14 @@
 package ui;
 
 import hxd.Key;
-import en.Prisonner;
+import en.Prisoner;
 import h2d.Object;
 
-@:access(en.Prisonner)
-class PrisonnerUI extends Object {
+@:access(en.Prisoner)
+class PrisonerUI extends Object {
 	
-	public var p(default, set) : en.Prisonner;
-	public function set_p(p : en.Prisonner) {
+	public var p(default, set) : en.Prisoner;
+	public function set_p(p : en.Prisoner) {
 		this.p = p;
 		updateKeys();
 		return this.p;
@@ -55,7 +55,7 @@ class PrisonnerUI extends Object {
 	}
 
 	public function updateKeys() {
-		var x = 25.;
+		var x = 40.;
 		var y = 0.;
 		for (d in p.mvKeys) {
 			var padKey = switch d {
@@ -86,12 +86,12 @@ class PrisonnerUI extends Object {
 				y -= keyBtn.getSize().height * .5;
 				keyBtn.x = x;
 				keyBtn.y = y;
-				x -= keyBtn.getSize().width;
+				x -= keyBtn.getSize().width + 2;
 				y += keyBtn.getSize().height;
 			} else {
 				keyBtn.x = x;
 				keyBtn.y = y;
-				x += keyBtn.getSize().width;
+				x += keyBtn.getSize().width + 2;
 			}
 		}
 	}

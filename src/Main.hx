@@ -20,16 +20,21 @@ class Main extends dn.Process {
 
 		// Engine settings
 		hxd.Timer.wantedFPS = Const.FPS;
-		s.defaultSmooth = true;
+		// s.defaultSmooth = true;
 		engine.backgroundColor = 0xff << 24 | 0x000000;
 
+		#if hl
 		sys.FileSystem.createDirectory('save');
+		#end
 
 		// Assets & data init
 		hxd.snd.Manager.get(); // force sound manager init on startup instead of first sound play
 		Assets.init();
 		new ui.Console(Assets.fontTiny, s);
 		Lang.init("en");
+		
+		if (Assets.musicResource != null) 
+			Assets.musicResource.play(true);//Play the music and loop it
 
 		// Game controller & default key bindings
 		controller = new dn.heaps.Controller(s);

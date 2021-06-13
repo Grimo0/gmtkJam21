@@ -1,3 +1,4 @@
+import ui.SuccessScreen;
 import en.Entity;
 import dn.Process;
 import hxd.Key;
@@ -131,6 +132,12 @@ class Game extends Process {
 		locked = true;
 		ca.lock();
 		new ui.GameOver();
+	}
+
+	public function sucess() {
+		locked = true;
+		ca.lock();
+		new ui.SuccessScreen();
 	}
 
 	/** CDB file changed on disk**/
