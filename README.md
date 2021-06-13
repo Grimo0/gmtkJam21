@@ -60,5 +60,5 @@ https://github.com/HaxeFoundation/hashlink/wiki/Distribution-&--Packaging
 - [LibGDX Texture Packer](https://github.com/libgdx/libgdx/wiki/Texture-packer) for packing texture
 - Debug font from Heaps samples
 - [binding](https://github.com/haddock7/hlimgui) for [Dear ImGui](https://github.com/ocornut/imgui)
-- Spritesheets from [Cainos](https://cainos.itch.io/)
-- Fx from [CodeManu](https://codemanu.itch.io/)
+- Spritesheets by [Cainos](https://cainos.itch.io/)
+- Fx by [CodeManu](https://codemanu.itch.io/)
