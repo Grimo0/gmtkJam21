@@ -14,7 +14,7 @@ class Level extends dn.Process {
 	}
 
 	public var gridSize(get, never) : Int;
-	inline function get_gridSize() return currLevel.l_Floor.gridSize;
+	inline function get_gridSize() return currLevel.l_Floor.gridSize * 2;
 
 	public var cWid(get, never) : Int; inline function get_cWid() return currLevel.l_Floor.cWid;
 	public var cHei(get, never) : Int; inline function get_cHei() return currLevel.l_Floor.cHei;
@@ -56,24 +56,32 @@ class Level extends dn.Process {
 		}
 
 		// Layers - floor
-		root.add(currLevel.l_Floor.render(), Const.GAME_LEVEL_FLOOR);
-		root.add(currLevel.l_PropsShadowAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
-		root.add(currLevel.l_Props.render(), Const.GAME_LEVEL_FLOOR);
-		root.add(currLevel.l_FloorShadowAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
-		root.add(currLevel.l_FloorAutoLayer.render(), Const.GAME_LEVEL_FLOOR);
-		var floorIt = root.getLayer(Const.GAME_LEVEL_FLOOR);
-		while (floorIt != null && floorIt.hasNext()) {
-			var o = floorIt.next();
-			o.setScale(2);
-		}
+		var layerRendered = currLevel.l_Floor.render();
+		layerRendered.alpha = currLevel.l_Floor.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+		layerRendered = currLevel.l_PropsShadowAutoLayer.render();
+		layerRendered.alpha = currLevel.l_PropsShadowAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+		layerRendered = currLevel.l_Props.render();
+		layerRendered.alpha = currLevel.l_Props.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+		layerRendered = currLevel.l_FloorShadowAutoLayer.render();
+		layerRendered.alpha = currLevel.l_FloorShadowAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
+		layerRendered = currLevel.l_FloorAutoLayer.render();
+		layerRendered.alpha = currLevel.l_FloorAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_FLOOR);
 
 		// Layers - ceiling
-		root.add(currLevel.l_PropsAutoLayer.render(), Const.GAME_LEVEL_CEILING);
-		var ceilIt = root.getLayer(Const.GAME_LEVEL_FLOOR);
-		while (ceilIt != null && ceilIt.hasNext()) {
-			var o = ceilIt.next();
-			o.setScale(2);
-		}
+		layerRendered = currLevel.l_PropsAutoLayer.render();
+		layerRendered.alpha = currLevel.l_PropsAutoLayer.opacity;
+		layerRendered.setScale(2);
+		root.add(layerRendered, Const.GAME_LEVEL_CEILING);
 		
 		/* var rootLayer = Const.GAME_LEVEL_FLOOR;
 		for (i in 0...currLevel.allUntypedLayers.length) {
