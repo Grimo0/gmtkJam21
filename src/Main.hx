@@ -48,12 +48,13 @@ class Main extends dn.Process {
 		controller.bind(START, Key.ESCAPE);
 
 		// Focus helper (process that suspend the game when the focus is lost)
-		new GameFocusHelper();
+		// new GameFocusHelper();
 
 		// Options loading
 		new Options();
 		Options.ME.load();
 
+		Game.sav.init();
 		Game.load();
 
 		// Start
