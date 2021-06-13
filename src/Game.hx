@@ -97,6 +97,8 @@ class Game extends Process {
 
 		level.currLevel = Assets.world.getLevel(levelUID != null ? levelUID : sav.levelUID);
 
+		camera.focus.setLevelCase(Std.int(level.cWid / 2), Std.int(level.cHei / 2));
+
 		resume();
 		Process.resizeAll();
 	}
@@ -242,6 +244,11 @@ class Game extends Process {
 		natArray[0] = Const.MAX_CELLS_PER_WIDTH;
 		if (ImGui.sliderFloat('Const.MAX_CELLS_PER_WIDTH', natArray, -1, 100, '%.0f')) {
 			Const.MAX_CELLS_PER_WIDTH = Std.int(natArray[0]);
+			scroller.setScale(Const.SCALE);
+		}
+		natArray[0] = Const.MAX_CELLS_PER_HEIGHT;
+		if (ImGui.sliderFloat('Const.MAX_CELLS_PER_HEIGHT', natArray, -1, 100, '%.0f')) {
+			Const.MAX_CELLS_PER_HEIGHT = Std.int(natArray[0]);
 			scroller.setScale(Const.SCALE);
 		}
 

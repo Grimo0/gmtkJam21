@@ -19,8 +19,8 @@ class Level extends dn.Process {
 
 	public var cWid(get, never) : Int; inline function get_cWid() return currLevel.l_Floor.cWid;
 	public var cHei(get, never) : Int; inline function get_cHei() return currLevel.l_Floor.cHei;
-	public var pxWid(get, never) : Int; inline function get_pxWid() return currLevel.pxWid;
-	public var pxHei(get, never) : Int; inline function get_pxHei() return currLevel.pxHei;
+	public var pxWid(get, never) : Int; inline function get_pxWid() return currLevel.pxWid * 2;
+	public var pxHei(get, never) : Int; inline function get_pxHei() return currLevel.pxHei * 2;
 
 	public function new() {
 		super(game);
