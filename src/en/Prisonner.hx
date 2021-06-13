@@ -1,6 +1,7 @@
 package en;
 
 import dn.heaps.GamePad.PadKey;
+import ui.PrisonnerUI;
 
 enum EDirection {
 	UP(k:PadKey);
@@ -10,6 +11,15 @@ enum EDirection {
 }
 
 class Prisonner extends Unit {
+	
+	public var ui(get, never) : PrisonnerUI;
+	public inline function get_ui() : PrisonnerUI {
+		if (entityType == Prisonner1)
+			return game.hud.p1UI;
+		return game.hud.p2UI;
+	}
+
+	var entityType : LDtkMap.EntityEnum;
 	var mvKeys = new Array<EDirection>();
 	var mvBeforeX : Int;
 	var mvBeforeY : Int;
@@ -20,7 +30,33 @@ class Prisonner extends Unit {
 	public var mvDirection : EDirection = null;
 	public var compagnon : Prisonner = null;
 
+	override function set_maxLife(v:Int):Int {
+		super.set_maxLife(v);
+		ui.updateHearts();
+		return maxLife;
+	}
+	override function set_life(v:Int):Int {
+		super.set_life(v);
+		ui.updateHearts();
+		return life;
+	}
+
 	public function new(ldtkEnt : LDtkMap.LDtkMap_Entity) {
+		entityType = ldtkEnt.entityType;
+		if (ldtkEnt.entityType == Prisonner1) {
+			mvKeys.push(UP(AXIS_LEFT_Y_POS));
+			mvKeys.push(LEFT(AXIS_LEFT_X_NEG));
+			mvKeys.push(DOWN(AXIS_LEFT_Y_NEG));
+			mvKeys.push(RIGHT(AXIS_LEFT_X_POS));
+			game.hud.p1UI.p = this;
+		} else {
+			mvKeys.push(UP(AXIS_RIGHT_Y_POS));
+			mvKeys.push(LEFT(AXIS_RIGHT_X_NEG));
+			mvKeys.push(DOWN(AXIS_RIGHT_Y_NEG));
+			mvKeys.push(RIGHT(AXIS_RIGHT_X_POS));
+			game.hud.p2UI.p = this;
+		}
+
 		super(ldtkEnt.identifier);
 
 		spr.setCenterRatio(ldtkEnt.pivotX, ldtkEnt.pivotY);
@@ -31,18 +67,6 @@ class Prisonner extends Unit {
 		maxLife = 5;
 		life = maxLife;
 		frameToReact = .4 / mvSpd;
-
-		if (ldtkEnt.entityType == Prisonner1) {
-			mvKeys.push(UP(AXIS_LEFT_Y_POS));
-			mvKeys.push(DOWN(AXIS_LEFT_Y_NEG));
-			mvKeys.push(LEFT(AXIS_LEFT_X_NEG));
-			mvKeys.push(RIGHT(AXIS_LEFT_X_POS));
-		} else {
-			mvKeys.push(UP(AXIS_RIGHT_Y_POS));
-			mvKeys.push(DOWN(AXIS_RIGHT_Y_NEG));
-			mvKeys.push(LEFT(AXIS_RIGHT_X_NEG));
-			mvKeys.push(RIGHT(AXIS_RIGHT_X_POS));
-		}
 	}
 
 	function stopMove(canceled : Bool) {

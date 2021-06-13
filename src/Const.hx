@@ -52,7 +52,7 @@ class Const {
 	}
 
 	/** Specific scaling for top UI elements **/
-	static inline function update_UI_SCALE() {
+	static public function update_UI_SCALE() {
 		// can be replaced with another way to determine the UI scaling
 		UI_SCALE = SCALE;
 	}

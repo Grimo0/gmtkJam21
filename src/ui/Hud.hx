@@ -1,5 +1,6 @@
 package ui;
 
+
 class Hud extends dn.Process {
 	public var game(get, never) : Game;
 	inline function get_game() return Game.ME;
@@ -13,18 +14,30 @@ class Hud extends dn.Process {
 	var flow : h2d.Flow;
 	var invalidated = true;
 
+	public var p1UI : PrisonnerUI;
+	public var p2UI : PrisonnerUI;
+
 	public function new() {
 		super(Game.ME);
 
 		createRootInLayers(game.root, Const.MAIN_LAYER_UI);
 		root.filter = new h2d.filter.ColorMatrix(); // force pixel perfect rendering
 
-		flow = new h2d.Flow(root);
+		// flow = new h2d.Flow(root);
+
+		p1UI = new PrisonnerUI(root);
+		p2UI = new PrisonnerUI(root);
 	}
 
 	override function onResize() {
 		super.onResize();
 		root.setScale(Const.UI_SCALE);
+		if (game.level == null || game.level.currLevel == null)
+			return;
+		p1UI.x = game.root.x + (game.pxWid - game.level.pxWid) * .5 + 2 * Const.GRID;
+		p1UI.y = game.root.y + game.pxHei - Const.GRID * .75;
+		p2UI.x = game.root.x + game.pxWid - (game.pxWid - game.level.pxWid) * .5 - 2 * Const.GRID;
+		p2UI.y = game.root.y + game.pxHei - Const.GRID * .75;
 	}
 
 	public inline function invalidate()
