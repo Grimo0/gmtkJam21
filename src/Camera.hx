@@ -49,7 +49,7 @@ class Camera extends dn.Process {
 		super(Game.ME);
 		focus = LPoint.fromCase(0, 0);
 		dx = dy = 0;
-		apply();
+		// apply();
 	}
 
 	@:keep
