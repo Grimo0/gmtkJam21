@@ -1,3 +1,4 @@
+import hxd.res.Sound;
 import dn.heaps.slib.*;
 
 class Assets {
@@ -13,6 +14,8 @@ class Assets {
 	public static var entities : SpriteLib;
 
 	public static var world : LDtkMap;
+		
+	public static var musicResource : Sound = null;
 
 	static var initDone = false;
 
@@ -67,6 +70,13 @@ class Assets {
 		fx = dn.heaps.assets.Atlas.load("atlas/fx.atlas");
 		entities = dn.heaps.assets.Atlas.load("atlas/entities.atlas");
 
+		// -- World
 		world = new LDtkMap();
+
+		// -- Music
+		// If we support mp3 we have our sound
+		if (hxd.res.Sound.supportedFormat(Mp3)) {
+			musicResource = hxd.Res.music.MJG;
+		}
 	}
 }
